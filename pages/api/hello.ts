@@ -2,12 +2,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  name: string
+  name: any
 }
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  const arr: any[] = [];
+  for (let index = 0; index < 1000; index++) {
+    arr.push({ name: 'John Doe' })
+  }
+  res.status(200).json({
+    name: arr
+  })
 }
